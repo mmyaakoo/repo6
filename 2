@@ -1,0 +1,24 @@
+using System;
+
+class MathOperations
+{
+    public static T Add<T>(T a, T b)
+    {
+        dynamic result = a + b;
+        return result;
+    }
+
+    // Реалізуйте інші методи для віднімання, множення і т.д.
+}
+
+class Program
+{
+    static void Main()
+    {
+        int sumInt = MathOperations.Add(5, 10);
+        Console.WriteLine($"Sum of integers: {sumInt}");
+
+        double sumDouble = MathOperations.Add(3.5, 7.2);
+        Console.WriteLine($"Sum of doubles: {sumDouble}");
+    }
+}
