@@ -1,0 +1,58 @@
+using System;
+
+class Quaternion
+{
+    public double W { get; set; }
+    public double X { get; set; }
+    public double Y { get; set; }
+    public double Z { get; set; }
+
+    public static Quaternion operator +(Quaternion q1, Quaternion q2)
+    {
+        return new Quaternion
+        {
+            W = q1.W + q2.W,
+            X = q1.X + q2.X,
+            Y = q1.Y + q2.Y,
+            Z = q1.Z + q2.Z
+        };
+    }
+
+    // Реалізуйте інші операції тут
+
+    public static bool operator ==(Quaternion q1, Quaternion q2)
+    {
+        return q1.W == q2.W && q1.X == q2.X && q1.Y == q2.Y && q1.Z == q2.Z;
+    }
+
+    public static bool operator !=(Quaternion q1, Quaternion q2)
+    {
+        return !(q1 == q2);
+    }
+
+    public double Norm()
+    {
+        return Math.Sqrt(W * W + X * X + Y * Y + Z * Z);
+    }
+
+    public Quaternion Conjugate()
+    {
+        return new Quaternion { W = W, X = -X, Y = -Y, Z = -Z };
+    }
+
+    public Quaternion Inverse()
+    {
+        double normSquared = W * W + X * X + Y * Y + Z * Z;
+        return new Quaternion { W = W / normSquared, X = -X / normSquared, Y = -Y / normSquared, Z = -Z / normSquared };
+    }
+
+    public Matrix4x4 ToRotationMatrix()
+    {
+        // Реалізуйте конвертацію кватерніона в матрицю обертання
+    }
+}
+
+class Matrix4x4
+{
+    // Реалізуйте клас матриці 4x4 тут
+}
